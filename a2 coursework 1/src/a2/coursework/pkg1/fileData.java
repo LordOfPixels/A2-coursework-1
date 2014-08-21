@@ -6,10 +6,10 @@ public class fileData {
     
     public static void main(String[] args)throws IOException {
         
-        String fileName = "C:/git/a2-coursework-1/log.txt";
+        String fileName = "C:\\log\\log.txt";
         System.out.println("Run Main");
         String[] allLines;
-        try {            
+        try {
             System.out.println("Succesfully tried");
             readFile file = new readFile(fileName);
             allLines = file.openFile();
@@ -17,7 +17,8 @@ public class fileData {
                 System.out.println(allLine);
             }
         
-            for (String allLine : allLines) {    
+            for (String allLine : allLines){
+                
             }
                         
         }

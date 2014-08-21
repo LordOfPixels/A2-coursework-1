@@ -16,7 +16,7 @@ public class readFile {
     public String[] openFile() throws IOException{
         
         
-        FileReader fr = new FileReader(path);
+        FileReader fr = new FileReader(path);        
         BufferedReader textReader = new BufferedReader(fr);
         System.out.println("file opened");
         
@@ -25,9 +25,9 @@ public class readFile {
         String tempLine;
         ArrayList<String> textArray = new ArrayList<String>();
         
-        int i;
+        
         int k = 0;
-        for (i=0; i < numLines; i++) {
+        for (int i=0; i < numLines; i++) {
             System.out.println("loop #" + i);
             tempLine = textReader.readLine();
             for (int j = 0; j < tempLine.length(); j++){
