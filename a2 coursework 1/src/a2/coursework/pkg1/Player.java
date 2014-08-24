@@ -8,6 +8,8 @@ public class Player
     ArrayList<Damage> damages;
     ArrayList<Assist> assists;
     int heals;
+    String name;
+    String id;
     
     public ArrayList<Frag> getFrags(){
         return frags;        
@@ -22,7 +24,7 @@ public class Player
     }
     
     public void setHeals(int heal){
-        heals = heals+heal;
+        heals += heal;
     }
     
     public ArrayList<Damage> getDamage(){

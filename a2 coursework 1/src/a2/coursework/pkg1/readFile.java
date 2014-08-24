@@ -14,8 +14,6 @@ public class readFile {
     }
     
     public String[] openFile() throws IOException{
-        
-        
         FileReader fr = new FileReader(path);        
         BufferedReader textReader = new BufferedReader(fr);
         System.out.println("file opened");
@@ -24,31 +22,19 @@ public class readFile {
         String tempWord ="";
         String tempLine;
         ArrayList<String> textArray = new ArrayList<String>();
+        BufferedReader br = new BufferedReader(fr);
+        String aLine;
+        ArrayList<String> textData = new ArrayList<String>();
         
-        
-        int k = 0;
-        for (int i=0; i < numLines; i++) {
-            System.out.println("loop #" + i);
-            tempLine = textReader.readLine();
-            for (int j = 0; j < tempLine.length(); j++){
-            if (tempLine.charAt(j) != '-'){
-                tempWord = tempWord + tempLine.charAt(j);                
-            }
-            else{
-                textArray.add(tempWord);
-                tempWord = "";
-                k++;
-            }
-        }        
+        while ((aLine = br.readLine()) != null){
+               textData.add(aLine);
+        }
+
+        textReader.close();
+    
+        return textData.toArray(new String[0]);
     }
     
-    textReader.close();
-    
-    String[] textData = textArray.toArray(new String[0]);
-    return textData;
-    
-
-}
     int readLines() throws IOException {
         System.out.println("readLines began");
         FileReader fileToRead = new FileReader (path);
