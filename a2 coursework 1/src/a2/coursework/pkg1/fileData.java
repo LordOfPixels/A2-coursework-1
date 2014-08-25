@@ -28,8 +28,8 @@ public class fileData {
                 Event event = new Event();
                 int currentPosition = 1;
                 currentPosition = ParseDate(eventString, currentPosition, event);
-                
-                System.out.println(event.getDate());
+                currentPosition = ParseNameId(eventString, currentPosition, event);
+                System.out.println(event.getDate() + "-" + event.getName() + "-" + event.getSteamId());
             }                        
         }
         catch (IOException e) {
@@ -38,8 +38,7 @@ public class fileData {
         
     }
     
-    private static int ParseDate(String eventString, int position, Event event) throws ParseException
-    {
+    private static int ParseDate(String eventString, int position, Event event) throws ParseException{
         int colonCount = 0;
         String dateString = "";
         int returnPosition = 0;
@@ -62,6 +61,49 @@ public class fileData {
             }                    
         }
         
+        return returnPosition;
+    }
+    
+    private static int ParseNameId(String eventString, int position, Event event) throws ParseException{
+        int returnPosition = 0;
+        int numOfSpchMks = 0;
+        String name = "";
+        String num = "";
+        String steamId = "";
+        String team = "";
+        int part = 0;
+        for (int j = position; j < eventString.length(); j++){
+            char currentChar = eventString.charAt(j);
+            returnPosition = j;
+            if (currentChar == '"' && numOfSpchMks != 2){
+                part = 1;
+                numOfSpchMks ++;
+            }
+            else if (numOfSpchMks == 2){
+                break;
+            }
+
+            if (currentChar == '<'){
+                part ++;
+            }
+            else if (currentChar == '>'){
+            }
+            else if (part == 1){
+                name += currentChar;
+            }
+            else if (part == 2){
+                num += currentChar;
+            }
+            else if (part == 3){
+                steamId += currentChar;
+            }
+            else if (part == 4){
+                team += currentChar;
+            }
+
+        }
+        event.setName(name);
+        event.setSteamId(steamId);
         return returnPosition;
     }
 }
