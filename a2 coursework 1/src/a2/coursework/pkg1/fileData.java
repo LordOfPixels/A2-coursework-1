@@ -106,4 +106,32 @@ public class fileData {
         event.setSteamId(steamId);
         return returnPosition;
     }
+    private static int ParseAction(String eventString, int position, Event event) throws ParseException{
+        String Action = "";
+        position = position++;
+        int returnPosition = position;
+        
+        for (int j = position; j < eventString.length(); j++){
+        returnPosition++;
+        char currentChar = eventString.charAt(j);
+            while (currentChar != '"'){
+                Action += currentChar;
+            }
+            if (Action == "triggered "){
+                
+            }
+            else if (Action == "killed "){
+                Frag frag;
+                String Victim = "";
+                for (int i = returnPosition; i< eventString.length(); i++){
+                    returnPosition++;
+                    while (currentChar != '"'){
+                        Victim += currentChar;
+                    }
+                    frag._victim = Victim;
+                }
+            }
+        }
+        return returnPosition;
+    }
 }
